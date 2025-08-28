@@ -18,15 +18,12 @@ const winPatterns = [
   [6, 7, 8],
 ];
 
-// Reset the game
 const resetGame = () => {
   turnO = true;
   count = 0;
   enableBoxes();
   msgContainer.classList.add("hide");
 };
-
-// Box click event
 boxes.forEach((box) => {
   box.addEventListener("click", () => {
     if (turnO) {
@@ -49,36 +46,29 @@ boxes.forEach((box) => {
   });
 });
 
-// Draw condition
 const gameDraw = () => {
   msg.innerText = "Game was a Draw.";
   msgContainer.classList.remove("hide");
   disableBoxes();
 };
 
-// Disable all boxes
 const disableBoxes = () => {
   boxes.forEach((box) => {
     box.style.pointerEvents = "none";
   });
 };
-
-// Enable all boxes
 const enableBoxes = () => {
   boxes.forEach((box) => {
     box.style.pointerEvents = "auto";
     box.innerText = "";
   });
 };
-
-// Show winner message
 const showWinner = (winner) => {
   msg.innerText = "Congratulations, Winner is ${winner}";
   msgContainer.classList.remove("hide");
   disableBoxes();
 };
 
-// Check if any pattern is matched
 const checkWinner = () => {
   for (let pattern of winPatterns) {
     let pos1Val = boxes[pattern[0]].innerText;
@@ -93,6 +83,6 @@ const checkWinner = () => {
   return false;
 };
 
-// Buttons click event
 newGameBtn.addEventListener("click", resetGame);
+
 resetBtn.addEventListener("click", resetGame);
